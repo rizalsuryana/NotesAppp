@@ -1,13 +1,13 @@
 # Proyek Materi React Fundamental dicoding.
 
--Kriteria Utama 1: Minimal terdapat 2 halaman yang berbeda
+## Kriteria Utama 1: Minimal terdapat 2 halaman yang berbeda
 Berikut detail dari kriterianya.
 
 Halaman 1: menampilkan daftar catatan.
 Halaman 2: menampilkan detail catatan atau catatan secara tunggal.
 
 
--Kriteria Utama 2: Daftar catatan
+## Kriteria Utama 2: Daftar catatan
 Berikut detail dari kriterianya.
 
 Menampilkan daftar catatan dengan data awal (initial data) yang kami sediakan.
@@ -18,7 +18,7 @@ isi catatan (body).
 Terdapat conditional rendering di mana bila tidak terdapat data catatan, UI menampilkan pesan “Tidak ada catatan” atau pesan apa pun yang mengindikasikan data catatan kosong.
 
 
--Kriteria Utama 3: Detail catatan
+## Kriteria Utama 3: Detail catatan
 Berikut detail dari kriterianya.
 
 Menampilkan catatan tunggal yang dipilih pengguna dari daftar catatan aktif atau diarsipkan.
@@ -27,7 +27,7 @@ Catatan yang tampil harus sesuai dengan id yang terdapat pada path parameter.
 Halaman Detil Catatan harus dapat diakses langsung dengan menggunakan URL.
 
 
--Kriteria Utama 4: Menambahkan catatan baru
+## Kriteria Utama 4: Menambahkan catatan baru
 Aplikasi mampu menambahkan catatan baru dengan kriteria berikut.
 
 Memanfaatkan controlled component dalam membuat form input.
@@ -53,14 +53,14 @@ Properti id pada tiap catatan yang disimpan haruslah unik. Tips dalam menetapkan
 Fungsi tambah catatan bisa ditampilkan pada halaman terpisah. Contohnya, pada URL /notes/new.
 
 
--Kriteria Utama 5: Menghapus catatan
+## Kriteria Utama 5: Menghapus catatan
 Aplikasi mampu menghapus catatan yang tersimpan. Berikut detailnya.
 
 Aplikasi harus menyediakan tombol hapus untuk menghapus data catatan yang disimpan.
 Tombol hapus boleh diletakkan di mana saja, tetapi pastikan pengguna dapat mengaksesnya dengan baik. Sebagai contoh, Anda bisa menampilkan pada halaman detail catatan dan/atau daftar catatan.
 
 
--Kriteria Utama 6: Memvalidasi properti
+## Kriteria Utama 6: Memvalidasi properti
 Berikut detail dari kriterianya.
 
 Memvalidasi seluruh masukkan (props) yang diterima komponen menggunakan PropTypes.
@@ -71,7 +71,7 @@ Selain kriteria utama, terdapat kriteria opsional yang yang dapat Anda penuhi ag
 
 
 
--Kriteria Opsional 1: Arsip Catatan
+## Kriteria Opsional 1: Arsip Catatan
 Berikut detail dari kriterianya.
 
 Catatan terarsip adalah catatan yang properti archived bernilai true.
@@ -86,7 +86,7 @@ Aplikasi harus menyediakan tombol arsip dan batal arsip untuk mengarsipkan dan m
 Tombol arsip dan batal arsip bisa diletakkan di mana saja, tetapi pastikan pengguna dapat mengaksesnya dengan baik. Sebagai contoh, Anda bisa menampilkan pada halaman detail catatan dan/atau daftar catatan.
 
 
--Kriteria Opsional 2: Pencarian catatan
+## Kriteria Opsional 2: Pencarian catatan
 Berikut detail dari kriterianya.
 
 Aplikasi memiliki fitur pencarian catatan berdasarkan kata kunci yang dimasukkan, dengan ketentuan:
@@ -96,6 +96,6 @@ Memanfaatkan search parameter agar pencarian bersifat shareable melalui URL.
 Memanfaatkan controlled component dalam membangun input pencarian.
 
 
--Kriteria Opsional 3: 404 Pages
+## Kriteria Opsional 3: 404 Pages
 Aplikasi menyediakan halaman khusus bila pengguna mengakses URL aplikasi dengan alamat yang tidak diketahui/diharapkan.
 
