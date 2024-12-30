@@ -1,9 +1,5 @@
 # Proyek Materi React Fundamental dicoding.
 
-Silahkan Mengecek Branch
-
-
-
 V2
 ---
 New Criteria :
