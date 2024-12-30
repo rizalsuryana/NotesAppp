@@ -71,13 +71,13 @@ Memvalidasi properti.
 Selain kriteria utama, terdapat kriteria opsional yang yang dapat Anda penuhi agar mendapat nilai yang lebih tinggi.
 
 
-### Kriteria Opsional 1: Menampilkan indikasi loading
+## Kriteria Opsional 1: Menampilkan indikasi loading
 Berikut detailnya:
 
 Aplikasi harus menampilkan indikasi loading ketika memuat data dari RESTful API sedang berlangsung.
 Indikasi loading bisa apa pun, yang penting tidak mengganggu pengalaman pengguna. Gunakanlah kreativitas Anda.
 
-### Kriteria Opsional 2: Fitur ubah bahasa
+## Kriteria Opsional 2: Fitur ubah bahasa
 Aplikasi harus memiliki fitur ubah bahasa. Berikut detailnya:
 
 Menyediakan tombol untuk mengubah bahasa Indonesia ke Inggris, atau sebaliknya.
