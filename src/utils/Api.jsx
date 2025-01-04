@@ -13,7 +13,7 @@ const putAccessToken = (accessToken) => {
 const fetchWithToken = async (url, options = {}) => {
     return fetch(url, {
         ...options,
-        headers: { B
+        headers: {
             ...options.headers,
             Authorization: `Bearer ${getAccessToken}`
         },
@@ -25,7 +25,7 @@ const login = async ({email, password}) => {
     const response = await fetch(`${BASE_URL}/login`, {
         method  : 'POST',
         headers : {
-            'Content-Type' : 'application/json'
+            'Content-Type' : 'application/json',
         },
         body    : JSON.stringify({email, password}),
     });
@@ -45,7 +45,7 @@ const register = async ({name, email, password}) => {
     const response = await fetch(`${BASE_URL}/register`, {
         method  :   'POST',
         headers :   {
-            'Content-Type' : 'application/json'
+            'Content-Type' : 'application/json',
         },
 
         body    : JSON.stringify({name, email, password}),
@@ -73,3 +73,117 @@ const getUserLogged = async () => {
 
     return { error: false, data: responseJson.data};
 }
+
+// in web it say Create Note
+ const addNote = async ({title, body}) => {
+    const response = await fetchWithToken(`${BASE_URL}/notes`, {
+        method  : 'POST',
+        headers : {
+            'Content-Type'  : 'application/json',
+        },
+        body    : JSON.stringify({title, body}),
+    });
+
+    const responseJson = await response.json();
+
+    if (responseJson.status !== 'success') {
+        // should I add alert ?? please tell me team reviewer :)
+        return {error : true, data : null};
+    }
+    return {error : false, data : responseJson.data};
+
+}
+
+//  Get Notes (non-archived)
+const  getActiveNotes = async () => {
+    const response      = await fetchWithToken(`${BASE_URL}/notes` );
+    const responseJson  = await response.json();
+
+    if (responseJson.status !== 'success') {
+        return {error : true, data : null};
+    }
+
+    return {error : false, data : responseJson.data};
+}
+
+
+const getArchivedNotes = async () => {
+    const response      = await fetchWithToken(`${BASE_URL}/notes/archived`);
+    const responseJson  = await response.json();
+
+    if (responseJson.status !== 'success') {
+        return {error : true, data : null};
+    }
+
+    return {error : false, data : responseJson.data};
+}
+
+
+//  Get Single Note
+const getNote = async (id) => {
+    const response = await fetchWithToken(`${BASE_URL}/notes/${id}`);
+    const responseJson = await response.json();
+
+    if(responseJson.status !== 'success') {
+        return{error: true, data : null}
+    }
+    return{error: false, data: responseJson.data};
+}
+
+
+const archiveNote = async (id) => {
+    const response      = await fetchWithToken(`${BASE_URL}/notes/${id}/archive`, {
+        method: 'POST',
+    });
+    const responseJson  = await response.json();
+
+    if(responseJson.status !== 'success') {
+        return {error: true, data: null};
+    }
+
+    return {error: false, data: responseJson.data};
+}
+
+
+const unArchiveNote = async (id) => {
+    const response      = await fetchWithToken(`${BASE_URL}/notes/${id}/unarchive`, {
+        method : 'POST',
+    });
+    const responseJson  = await response.json();
+
+    if(responseJson.status !== 'success') {
+        return {error: true, data: null};
+    }
+
+    return{error: false, data: responseJson.data};
+}
+
+
+const deleteNote = async (id) => {
+    const response      = await fetchWithToken(`${BASE_URL}/notes/${id}`, {
+        method : 'DELETE',
+    });
+    const responseJson  = await response.json();
+
+    if(responseJson.status !== 'success') {
+        return{error: true, data: null};
+    }
+
+    return{error: false, data: responseJson.data};
+}
+
+
+export{
+    getAccessToken,
+    putAccessToken,
+    register,
+    login,
+    getUserLogged,
+    getActiveNotes,
+    addNote,
+    getNote,
+    getArchivedNotes,
+    archiveNote,
+    unArchiveNote,
+    deleteNote,
+};
