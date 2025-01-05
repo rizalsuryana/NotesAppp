@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import ItemNote from "./ItemNote";
 import PropTypes from "prop-types";
+import LocaleContext from "../contexts/LocaleContext";
 
 const ListNote = ({notes}) => {
+    const {languageSelect} = useContext(LocaleContext);
     return (
         <div>
             {
@@ -16,7 +18,7 @@ const ListNote = ({notes}) => {
                 ) : (
                     <section className="notes-list-empty">
                         <p className="notes-list__empty">
-                            Tidak ada catatan yang tersedia.
+                            {languageSelect({en: 'Not Available Notes', id: 'Tidak ada catatan yang tersedia.'})}
                         </p>
                     </section>
                 )

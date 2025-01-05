@@ -1,3 +1,8 @@
+/**
+ * Not use
+ * for this case
+ */
+
 import React from 'react';
 import InputNote from '../components/InputNote';
 import ActionButton from '../components/ActionButton';

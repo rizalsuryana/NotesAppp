@@ -1,21 +1,55 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import ThemeContext from "../contexts/ThemeContext";
+import LocaleContext from "../contexts/LocaleContext";
+import { SiGoogletranslate } from "react-icons/si";
+import { FiLogOut, FiMoon, FiSun } from "react-icons/fi";
+import PropTypes from "prop-types";
 
-const NavigationNote = () => {
+const NavigationNote = ({logout, name}) => {
+    const {theme, toggleTheme} = useContext(ThemeContext);
+    const {toggleLocale, languageSelect} = useContext(LocaleContext);
+
     return (
         <>
         <h1>
-            <Link to={"/"}>Notes Application</Link>
+            <Link to={"/"}>{languageSelect({en: 'Notes Application', id: 'Aplikasi Catatan'})}</Link>
         </h1>
+        {logout !== undefined && (
+    
         <nav className="navigation">
             <ul>
                 <li>
-                    <Link to={"/archives"}>Archived Notes</Link>
+                    <Link to={"/archives"}>{languageSelect({en: 'Archived Notes', id: 'Arsip Catatan'})}</Link>
                 </li>
             </ul>
         </nav>
+
+        )}
+
+
+        <button className="toggle-locale" onClick={toggleLocale}>
+            <SiGoogletranslate/>
+            </button>
+
+            <button className="toggle-theme">
+                {theme === 'light' ? <FiMoon/> : <FiSun/>}
+            </button>
+
+
+            {logout !== undefined &&(
+                <button className="button-logout" onClick={logout} title="Logout">
+                    <FiLogOut/> {name}
+
+                </button>
+            )}
         </>
     );
+}
+
+NavigationNote.propTypes={
+    logout  : PropTypes.func,
+    name    : PropTypes.string
 }
 
 export default NavigationNote;

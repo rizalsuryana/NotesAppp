@@ -1,77 +1,133 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import InputNote from "../components/InputNote";
 import ActionButton from "../components/ActionButton";
-import { addNote } from "../utils/local-data";
+import { addNote } from "../utils/Api";
 import { useNavigate } from "react-router-dom";
 import { FiCheck } from "react-icons/fi";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
+import LocaleContext from "../contexts/LocaleContext";
 
-const AddPageWrapper = () => {
+const AddPage = () => {
+    const {languageSelect} = useContext(LocaleContext);
     const navigate = useNavigate();
+    const [newNote, setNewNote] = useState({
+        title   : '',
+        body    : ''
+    });
 
-    const saveNoteHandler = (note) => {
-        addNote(note);
-        navigate("/");
-    }
+    
 
-    return <AddPage onSaveNoteHandler={saveNoteHandler} />;
-}
-
-
-class AddPage extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            title   : "",
-            body    : ""
-        };
-
-        this.onTitleChangeEventHandler  = this.onTitleChangeEventHandler.bind(this);
-        this.onBodyInputEventHandler    = this.onBodyInputEventHandler.bind(this);
-        this.onClickSaveButton          = this.onClickSaveButton.bind(this);
-    }
-
-    onTitleChangeEventHandler(event) {
-        this.setState(()=> {
-            return{
-                title   : event.target.value
+    const onTitleChangeEventHandler = (e) => {
+        setNewNote((prevNewNote)=> {
+            return {
+                ...prevNewNote,
+                title   : e.target.value
             };
         });
     }
 
-    onBodyInputEventHandler(event) {
-        this.setState(() => {
+    const onBodyInputEventHandler = (e) => {
+        setNewNote((prevNewNote) => {
             return{
-                body   : event.target.innerHTML
+                ...prevNewNote,
+                body    : e.target.innerHTML
             };
         });
     }
 
-    onClickSaveButton() {
-        this.props.onSaveNoteHandler(this.state);
+    const onSaveNoteHandler = async () => {
+        await addNote(newNote);
+        navigate('/');
     }
 
-    render() {
-        return (
-            <section className="add-new-page">
-                <InputNote
-                state={this.state}
-                onTitleChange={this.onTitleChangeEventHandler}
-                onBodyInput={this.onBodyInputEventHandler}
+
+    return(
+        <section className="add-new-page">
+            <InputNote
+                state={newNote}
+                onTitleChange={onTitleChangeEventHandler}
+                onBodyInput={onBodyInputEventHandler}
                 />
                 <div className="add-new-page__action">
                     <ActionButton
-                    title="Save" onClick={this.onClickSaveButton} icon={<FiCheck/>}
+                    title={languageSelect({en: 'Save', id: 'Simpan'})}
+                    onClick={onSaveNoteHandler} icon={<FiCheck/>}
                     />
                 </div>
-            </section>
-        );
-    }
-
+        </section>
+    )
 }
 
-AddPage.propTypes = {
-    onSaveNoteHandler   : PropTypes.func.isRequired
-};
+export default AddPage;
 
-export default AddPageWrapper;
+
+
+// const AddPageWrapper = () => {
+//     const navigate = useNavigate();
+
+//     const saveNoteHandler = (note) => {
+//         addNote(note);
+//         navigate("/");
+//     }
+
+//     return <AddPage onSaveNoteHandler={saveNoteHandler} />;
+// }
+
+
+// class AddPage extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         this.state = {
+//             title   : "",
+//             body    : ""
+//         };
+
+//         this.onTitleChangeEventHandler  = this.onTitleChangeEventHandler.bind(this);
+//         this.onBodyInputEventHandler    = this.onBodyInputEventHandler.bind(this);
+//         this.onClickSaveButton          = this.onClickSaveButton.bind(this);
+//     }
+
+//     onTitleChangeEventHandler(event) {
+//         this.setState(()=> {
+//             return{
+//                 title   : event.target.value
+//             };
+//         });
+//     }
+
+//     onBodyInputEventHandler(event) {
+//         this.setState(() => {
+//             return{
+//                 body   : event.target.innerHTML
+//             };
+//         });
+//     }
+
+//     onClickSaveButton() {
+//         this.props.onSaveNoteHandler(this.state);
+//     }
+
+//     render() {
+//         return (
+//             <section className="add-new-page">
+//                 <InputNote
+//                 state={this.state}
+//                 onTitleChange={this.onTitleChangeEventHandler}
+//                 onBodyInput={this.onBodyInputEventHandler}
+//                 />
+//                 <div className="add-new-page__action">
+//                     <ActionButton
+//                     title="Save" onClick={this.onClickSaveButton} icon={<FiCheck/>}
+//                     />
+//                 </div>
+//             </section>
+//         );
+//     }
+
+// }
+
+// AddPage.propTypes = {
+//     onSaveNoteHandler   : PropTypes.func.isRequired
+// };
+
+// export default AddPageWrapper;
