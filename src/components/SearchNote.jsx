@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
+import LocaleContext from "../contexts/LocaleContext";
 
 const SearchNote = ({keyword, keywordChange}) => {
+    const {languageSelect} = useContext(LocaleContext);
     return (
         <section className="search-bar">
             <input type="text"
-            placeholder="Search Note By Title"
+            placeholder={languageSelect({en: "Search Note By Title", id: 'Cari berdasarkan judul catatan'})}
             value={keyword}
             onChange={(event) => keywordChange(event.target.value)}
             />

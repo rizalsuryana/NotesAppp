@@ -7,8 +7,13 @@ import ArsipPageWrapper from "./pages/ArsipPage";
 import DetailPageWrapper from "./pages/DetailPage";
 import EditPageWrapper from "./pages/EditPage";
 import PageNotFound from './pages/PageNotFound';
+import RegisterPage from './pages/RegisterPage';
+import ThemeContext from './contexts/ThemeContext';
+import LocaleContext from './contexts/LocaleContext';
+import LoginPage from './pages/LoginPage';
+import { getUserLogged, putAccessToken } from './utils/Api';
 
-function App() {
+const App =() => {
   return (
     <div className="app-container">
 
