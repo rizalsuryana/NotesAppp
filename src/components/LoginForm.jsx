@@ -2,10 +2,9 @@ import { useContext } from "react";
 import PropTypes from "prop-types";
 import useInput from "../hooks/useInput";
 import LocaleContext from "../contexts/LocaleContext";
-import { login } from "../utils/Api";
 
 const LoginForm = ({login}) => {
-    const [languageSelect] = useContext(LocaleContext);
+    const {languageSelect} = useContext(LocaleContext);
     const [email, onEmaiChange] = useInput('');
     const [password, onPasswordChange] = useInput('');
 

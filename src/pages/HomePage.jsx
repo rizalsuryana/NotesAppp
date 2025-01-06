@@ -13,7 +13,7 @@ import Loading from "../components/Loading";
 
 
 const HomePage = () => {
-    const languageSelect = useContext(LocaleContext);
+    const {languageSelect} = useContext(LocaleContext);
     const [searchParams, setSearchParams] = useSearchParams();
     const [notes, setNotes] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -51,9 +51,7 @@ const HomePage = () => {
 
     return(
         <section className="homepage">
-            <h4>
-                {languageSelect({en: 'Active Notes', id: 'Catatan Aktif'})}
-            </h4>
+            <h4>{languageSelect({en: 'Active Notes', id: 'Catatan Aktif'})}</h4>
 
             <SearchNote keyword={keyword} keywordChange={onKeywordChangeHandler} />
             <ListNote notes={filteredNotes}/>

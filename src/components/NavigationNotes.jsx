@@ -20,7 +20,7 @@ const NavigationNote = ({logout, name}) => {
         <nav className="navigation">
             <ul>
                 <li>
-                    <Link to={"/archives"}>{languageSelect({en: 'Archived Notes', id: 'Arsip Catatan'})}</Link>
+                    <Link to="/archives">{languageSelect({en: 'Archived Notes', id: 'Arsip Catatan'})}</Link>
                 </li>
             </ul>
         </nav>
@@ -32,15 +32,14 @@ const NavigationNote = ({logout, name}) => {
             <SiGoogletranslate/>
             </button>
 
-            <button className="toggle-theme">
-                {theme === 'light' ? <FiMoon/> : <FiSun/>}
+            <button className="toggle-theme" onClick={toggleTheme}>
+                {theme === 'light' ?  <FiMoon/> : <FiSun/>}
             </button>
 
 
             {logout !== undefined &&(
                 <button className="button-logout" onClick={logout} title="Logout">
                     <FiLogOut/> {name}
-
                 </button>
             )}
         </>

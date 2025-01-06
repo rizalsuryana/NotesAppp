@@ -19,7 +19,7 @@ const RegisterPage = () => {
 
     return(
 
-        <Section className="register-page">
+        <section className="register-page">
             <h2>{languageSelect({en: 'Please fill the form', id: 'Silahkan isi formulir pendaftaran'})}</h2>
             <RegisterForm register={onRegisterHandler}/>
             <p>
@@ -27,7 +27,7 @@ const RegisterPage = () => {
                 <Link to='/'>{languageSelect({en: 'Login', id: 'Masuk'})}</Link>
             </p>
 
-        </Section>
+        </section>
     );
 }
 
