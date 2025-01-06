@@ -290,3 +290,15 @@ main {
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
+.loading{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-material {
+  width: 88px;
+  height: 88px;
+  margin-top: 222px;
+}

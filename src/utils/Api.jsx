@@ -15,7 +15,7 @@ const fetchWithToken = async (url, options = {}) => {
         ...options,
         headers: {
             ...options.headers,
-            Authorization: `Bearer ${getAccessToken}`
+            Authorization: `Bearer ${getAccessToken()}`,
         },
     });
 }
@@ -32,7 +32,7 @@ const login = async ({email, password}) => {
 
     const responseJson = await response.json();
 
-    if(response.status !== 'success') {
+    if(responseJson.status !== 'success') {
         alert(responseJson.message);
         return { error: true, data: null};
     }
