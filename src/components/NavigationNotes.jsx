@@ -13,14 +13,14 @@ const NavigationNote = ({logout, name}) => {
     return (
         <>
         <h1>
-            <Link to={"/"}>{languageSelect({en: 'Notes Application', id: 'Aplikasi Catatan'})}</Link>
+            <Link to={"/"}>{languageSelect({en: 'Notes', id: 'Catatan'})}</Link>
         </h1>
         {logout !== undefined && (
     
         <nav className="navigation">
             <ul>
                 <li>
-                    <Link to="/archives">{languageSelect({en: 'Archived Notes', id: 'Arsip Catatan'})}</Link>
+                    <Link to="/archives">{languageSelect({en: 'Archived', id: 'Arsip'})}</Link>
                 </li>
             </ul>
         </nav>
